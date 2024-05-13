@@ -3,31 +3,17 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+    --default-text-color: #3C4D82;
+    --default-input-border: #CFAC48;
+    --default-input-fill: #FBBF24;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+    --default-tab-enable: #091B50;
+    --default-tab-disable: #E0E4EF;
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+    --default-button-primary-fill: #091B50;
+    --default-button-primary-text: #E0E4EF;
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    --default-button-secondary-fill: #E3A70C;
+    --default-button-secondary-text: #E0E4EF;
+
 }
