@@ -2,11 +2,12 @@ import React from 'react';
 
 interface ButtonProps {
   title: string;
-  variant: 'primary' | 'secondary';
+  className?: string;
+  variant?: 'primary' | 'secondary';
   onClick?: () => void;
 }
 
-const ButtonUI: React.FC<ButtonProps> = ({ variant = 'primary', title, onClick }) => {
+const ButtonUI: React.FC<ButtonProps> = ({ className, variant = 'primary', title, onClick }) => {
 
   const variants = {
     'primary': 'bg-[var(--default-button-primary-fill)] text-[var(--default-button-primary-text)]',
@@ -15,7 +16,7 @@ const ButtonUI: React.FC<ButtonProps> = ({ variant = 'primary', title, onClick }
 
   return (
     <button
-      className={`font-roboto ${variants[variant]} rounded-lg px-4 py-2 uppercase shadow-md hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white`}
+      className={`${className} font-roboto ${variants[variant]} rounded-lg px-4 py-2 uppercase shadow-md hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white w-full`}
       onClick={onClick}
     >
       {title}

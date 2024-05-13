@@ -16,10 +16,8 @@ const CreateLimitDeposit: React.FC = ({}) => {
             <InputText type="email" placeholder="Enter your email"/>
             <InputText type="password" placeholder="Enter your password"/>
             <InputText type="password" placeholder="Confirm your password"/>
+            <Button title={'guardar'} variant={'secondary'}/>
           </form>
-        </div>
-        <div className="flex justify-center items-center p-2">
-          <Button title={'guardar'} variant={'secondary'}/>
         </div>
       </div>
     </React.Fragment>
