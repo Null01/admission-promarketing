@@ -1,41 +1,47 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { Children, useState } from 'react';
 
-interface Tab {
-  title: string;
-  content: JSX.Element | string;
-}
-
-const Tabs: React.FC<{ tabs: Tab[] }> = ({ tabs }) => {
+export const Tabs: React.FC = ({ children }) => {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
 
-  const handleClick = (index: number) => {
+  const handleTabClick = (index: number) => {
     setActiveTabIndex(index);
   };
 
   return (
     <div className="flex flex-col">
       <ul className="flex flex-row overflow-auto p-2">
-        {tabs.map((tab, index) => (
+        {Children.map(children, (child, index) => (
           <li key={index}
               className={`px-3 py-2 rounded-t-lg cursor-pointer ${
                 activeTabIndex === index
                   ? 'font-bold border-b-2 border-[var(--default-tab-enable)]'
                   : '  border-b-2 border-[var(--default-tab-disable)]'
               }`}
-              onClick={() => handleClick(index)}
-          >
-            {tab.title}
+              onClick={() => handleTabClick(index)}>
+            {child.props.title}
           </li>
         ))}
       </ul>
 
-      <div className="p-2">
-        {tabs[activeTabIndex].content}
-      </div>
+      {children.map((child, index) => (
+        <React.Fragment key={index}>
+          {React.cloneElement(child, { ...child.props, isActive: index === activeTabIndex })}
+        </React.Fragment>
+      ))}
+
     </div>
   );
 };
 
-export default Tabs;
+interface TabProps {
+  title?: string;
+  children: React.ReactNode;
+  isActive?: boolean;
+}
+
+export const Tab: React.FC<TabProps> = ({ children, isActive }) => {
+  const className = `pl-4 pt-2 pr-4 ${isActive ? '' : 'hidden'}`;
+  return (<div className={className}>{children}</div>);
+};

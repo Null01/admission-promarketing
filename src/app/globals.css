@@ -16,4 +16,10 @@
     --default-button-secondary-fill: #E3A70C;
     --default-button-secondary-text: #E0E4EF;
 
+    --toastify-font-family: var(--font-poppins) !important;
+
+}
+
+.Toastify__toast-body {
+    font-size: 12px !important;
 }

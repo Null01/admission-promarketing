@@ -20,6 +20,9 @@ const config: {
         sans: ['var(--font-poppins)', 'sans-serif'],
         roboto: ['var(--font-roboto)', 'Arial'],
       },
+      fontSize: {
+        xs: ['12px'],
+      },
     },
   },
   plugins: [],
